@@ -85,24 +85,31 @@ export default function App() {
       </header>
 
       {/* Hero */}
-      <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <section id="hero" className="relative min-h-screen flex flex-col overflow-hidden">
         <Suspense fallback={<div className="absolute inset-0" style={{ background: '#080e1a' }} />}>
           <GravitationalLensHero />
         </Suspense>
-        <div className="absolute inset-0 bg-gradient-to-t from-[#080e1a] via-transparent to-transparent" style={{ zIndex: 1 }} />
-        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto" style={{ animation: 'fadeSlideUp 1s cubic-bezier(0.16,1,0.3,1) 0.3s both' }}>
-          <p className="eyebrow mb-6">Crestborne Private Office</p>
-          <h1 className="font-display font-light text-pearl-100 mb-6" style={{ fontSize: 'clamp(2.5rem, 7vw, 5.5rem)', lineHeight: 1.1 }}>
+        {/* Gradient only at very bottom to blend into next section */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#080e1a] to-transparent" style={{ zIndex: 1 }} />
+        {/* Text content -- compact upper block */}
+        <div className="relative z-10 text-center px-6 max-w-4xl mx-auto pt-24 md:pt-28" style={{ animation: 'fadeSlideUp 1s cubic-bezier(0.16,1,0.3,1) 0.3s both' }}>
+          <p className="eyebrow mb-4">Crestborne Private Office</p>
+          <h1 className="font-display font-light text-pearl-100 mb-4" style={{ fontSize: 'clamp(2rem, 5.5vw, 4rem)', lineHeight: 1.1 }}>
             Where Legacy Meets Precision
           </h1>
-          <p className="text-pearl-200 text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed" style={{ animation: 'fadeSlideUp 1s cubic-bezier(0.16,1,0.3,1) 0.6s both' }}>
+          <p className="text-pearl-200 text-base md:text-lg max-w-xl mx-auto mb-6 leading-relaxed" style={{ animation: 'fadeSlideUp 1s cubic-bezier(0.16,1,0.3,1) 0.6s both' }}>
             Independent wealth advisory for ultra-high-net-worth families across Asia-Pacific and the Middle East.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center" style={{ animation: 'fadeSlideUp 1s cubic-bezier(0.16,1,0.3,1) 0.8s both' }}>
+          <div className="flex flex-col sm:flex-row gap-3 justify-center" style={{ animation: 'fadeSlideUp 1s cubic-bezier(0.16,1,0.3,1) 0.8s both' }}>
             <button onClick={() => scrollTo('contact')} className="btn-sage">Schedule a Consultation</button>
             <button onClick={() => scrollTo('approach')} className="btn-ghost">Our Approach</button>
           </div>
-          <div className="flex items-center justify-center gap-4 sm:gap-6 mt-12 flex-wrap" style={{ animation: 'fadeIn 1.5s ease 1.2s both' }}>
+        </div>
+        {/* Spacer -- lets the formation breathe in the lower viewport */}
+        <div className="flex-1 min-h-[35vh]" />
+        {/* Trust badges pinned near bottom */}
+        <div className="relative z-10 text-center px-6 pb-10" style={{ animation: 'fadeIn 1.5s ease 1.2s both' }}>
+          <div className="flex items-center justify-center gap-4 sm:gap-6 flex-wrap">
             {['MAS Licensed', 'SFC Regulated', 'DIFC Authorised'].map(badge => (
               <span key={badge} className="text-[10px] tracking-widest uppercase px-3 py-1.5 rounded-sm border border-sage-600/20 text-sage-400">
                 {badge}
