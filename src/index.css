@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: #080e1a;
+    color: #e8e2d8;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 600;
+    color: #f0ece4;
+  }
+  ::selection {
+    background: rgba(138, 158, 143, 0.25);
+    color: #f0ece4;
+  }
+}
+
+@layer components {
+  .btn-sage {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    border: 1px solid #8a9e8f;
+    color: #f0ece4;
+    background: transparent;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    letter-spacing: 0.02em;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .btn-sage:hover {
+    background: rgba(138, 158, 143, 0.1);
+    box-shadow: 0 0 20px rgba(138, 158, 143, 0.12);
+    transform: translateY(-2px);
+  }
+
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.75rem;
+    border: 1px solid rgba(138, 158, 143, 0.25);
+    color: #a3b5a8;
+    background: transparent;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 500;
+    font-size: 0.875rem;
+    letter-spacing: 0.02em;
+    border-radius: 0.25rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  .btn-ghost:hover {
+    border-color: #8a9e8f;
+    color: #f0ece4;
+    transform: translateY(-2px);
+  }
+
+  .glass-card {
+    background: linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+    border: 1px solid rgba(138, 158, 143, 0.08);
+    border-radius: 0.25rem;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: all 0.4s ease;
+  }
+  .glass-card:hover {
+    border-color: rgba(138, 158, 143, 0.18);
+    box-shadow: 0 0 30px rgba(138, 158, 143, 0.06);
+    transform: translateY(-4px);
+  }
+
+  .glass-header {
+    background: rgba(8, 14, 26, 0.88);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(138, 158, 143, 0.06);
+  }
+
+  .eyebrow {
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.625rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: #8a9e8f;
+  }
+
+  .accent-line {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #8a9e8f, transparent);
+    opacity: 0.2;
+  }
+
+  .input-field {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(138, 158, 143, 0.12);
+    border-radius: 0.25rem;
+    color: #f0ece4;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-size: 0.875rem;
+    outline: none;
+    transition: all 0.3s ease;
+  }
+  .input-field:focus {
+    border-color: #8a9e8f;
+    box-shadow: 0 0 0 2px rgba(138, 158, 143, 0.1);
+  }
+  .input-field::placeholder {
+    color: #5a6e60;
+  }
+}
+
+/* Film grain overlay */
+.film-grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.02;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #080e1a; }
+::-webkit-scrollbar-thumb { background: #1e2a30; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #5a6e60; }
+
+/* Animations */
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
